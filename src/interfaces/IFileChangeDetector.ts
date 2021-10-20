@@ -1,3 +1,3 @@
 export interface IFileChangeDetector {
-    listen(): void
+    watch(): void
 }
