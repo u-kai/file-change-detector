@@ -1,6 +1,5 @@
-import * as chokidar from 'chokidar'
-import { FileChangeDetector } from './classes/FileChangeDetector'
-import { EventToCallback } from './types/EventToCallback'
+import { FileChangeDetector } from './classes/file-change-detectors/FileChangeDetector'
+import { EventToCallback } from './types/file-change-detects/EventToCallback'
 const c1 = (path: string) => console.log(path)
 const c2 = (path: string) => console.log('dir', path)
 

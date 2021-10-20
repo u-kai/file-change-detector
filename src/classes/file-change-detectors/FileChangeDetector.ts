@@ -1,11 +1,10 @@
-import { IFileChangeDetector } from '../interfaces/IFileChangeDetector'
+import { IFileChangeDetector } from '../../interfaces/IFileChangeDetector'
 import * as chokidar from 'chokidar'
-import { EventType } from '../types/EventType'
-import { EventToCallback } from '../types/EventToCallback'
+import { EventType } from '../../types/file-change-detects/EventType'
+import { EventToCallback } from '../../types/file-change-detects/EventToCallback'
 export class FileChangeDetector implements IFileChangeDetector {
     private watchTopDirectory: string
     private eventToCallback: EventToCallback
-
     constructor(eventToCallback: EventToCallback, watchTopDirectory = '.') {
         this.watchTopDirectory = watchTopDirectory
         if (this.isEmpty(eventToCallback)) {
