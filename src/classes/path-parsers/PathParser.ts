@@ -16,7 +16,8 @@ export class PathParser {
         const relative = this.relativeTwo(importFilePath, exportFilePath)
         const beginExtensionIndex: number = relative.search(/\.[a-z]+$/)
         const importStatementPath = relative.substr(0, beginExtensionIndex)
-        return importStatementPath
+        const removeRelativeHead = importStatementPath.substr('../'.length)
+        return removeRelativeHead
     }
     getDirectories = (filePath: string): string => {
         const beginFilePathIndex: number = filePath.search(/\/[a-zA-Z]+[a-zA-Z0-9]+\.[a-z]+$/)
