@@ -18,4 +18,9 @@ export class PathParser {
         const importStatementPath = relative.substr(0, beginExtensionIndex)
         return importStatementPath
     }
+    getDirectories = (filePath: string): string => {
+        const beginFilePathIndex: number = filePath.search(/\/[a-zA-Z]+[a-zA-Z0-9]+\.[a-z]+$/)
+        const directories: string = filePath.substr(0, beginFilePathIndex)
+        return directories
+    }
 }

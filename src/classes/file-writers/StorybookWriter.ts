@@ -2,6 +2,7 @@ import { IComponentName } from '../../interfaces/domain-privitives/IComponentNam
 import { IPath } from '../../interfaces/domain-privitives/IPath'
 import { IFileWriter } from '../../interfaces/witers/IFileWriter'
 import { readFileSync } from 'fs'
+import { getIntrospectionQuery } from 'graphql'
 
 type AutoStorybookJson = {
     srcTop: string
@@ -43,5 +44,16 @@ export default {
     title: '${this.componentName.name}'
 }
 export const Storybook = () => <${this.componentName.name}>auto create</${this.componentName.name}>`
+    }
+    getFileDirPath = (): string => {
+        const beginFilePathIndex = this.componentFilePath.relative.search(/\/[a-zA-Z1-9]+\.[a-z]+$/)
+        const fileDirPath = this.componentFilePath.relative.substr(0, beginFilePathIndex)
+        return fileDirPath
+    }
+    srcDirToStorybooksDir = (): string => {
+        const src = this.asbJson.srcTop
+        const story = this.asbJson.storybooksTop
+        const replaceToStorybooksDir = this.getFileDirPath().replace(src, story)
+        return replaceToStorybooksDir
     }
 }
