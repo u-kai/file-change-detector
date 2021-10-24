@@ -1,4 +1,4 @@
-import { IExtension } from '../../interfaces/file-parsers/IExtension'
+import { IExtension } from '../../interfaces/domain-privitives/IExtension'
 import { AnyExtension } from './AnyExtension'
 
 export class ExtensionFactory {

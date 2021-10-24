@@ -1,27 +1,26 @@
-import { IExtension } from '../../interfaces/file-parsers/IExtension'
-import { ExtensionFactory } from './ExtensionFactory'
-import { File } from './File'
+import { IExtension } from '../../interfaces/domain-privitives/IExtension'
+import { IFile } from '../../interfaces/domain-privitives/IFile'
+import { ExtensionFactory } from '../domai-primitives/ExtensionFactory'
 
 export class FileParser {
-    private file: File
+    private file: IFile
     private beginExtensionIndex: number
-    constructor(file: File) {
+    constructor(file: IFile) {
         this.file = file
-        this.beginExtensionIndex = this.file.value.search(/\.[a-z0-9]*$/)
+        this.beginExtensionIndex = this.file.filename.search(/\.[a-z0-9]*$/)
     }
     isMatchExtension = (extension: IExtension): boolean => {
-        const wantExtension = extension.value
-        const thisExtension = this.getExtension().value
-        console.log(wantExtension, thisExtension)
+        const wantExtension = extension.extension
+        const thisExtension = this.getExtension().extension
         return wantExtension === thisExtension
     }
-    getExtension = (): IExtension => {
-        const extension: string = this.file.value.substr(this.beginExtensionIndex)
-        return new ExtensionFactory().createExtension(extension)
-    }
     getFileNameExcludeExtension = (): string => {
-        const filename = this.file.value
+        const filename = this.file.filename
         const removeExtensionFileName = filename.substr(0, this.beginExtensionIndex)
         return removeExtensionFileName
+    }
+    private getExtension = (): IExtension => {
+        const extension: string = this.file.filename.substr(this.beginExtensionIndex)
+        return new ExtensionFactory().createExtension(extension)
     }
 }

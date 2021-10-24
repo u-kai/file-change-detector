@@ -1,5 +1,7 @@
-export class AnyExtension {
-    readonly value: string
+import { IExtension } from '../../interfaces/domain-privitives/IExtension'
+
+export class AnyExtension implements IExtension {
+    readonly extension: string
     private extensionMaxLength = 10
     private extensionMinLength = 3
     constructor(extension: string) {
@@ -7,10 +9,10 @@ export class AnyExtension {
             throw new Error(`${extension} is not extension `)
         }
         if (this.hasPreviousDot(extension) === false) {
-            this.value = this.addPreviousDot(extension)
+            this.extension = this.addPreviousDot(extension)
             return this
         }
-        this.value = extension
+        this.extension = extension
     }
     private isNotExtension = (value: string): boolean => {
         if (this.isRange(value) === false) {

@@ -1,3 +1,3 @@
 export interface IExtension {
-    readonly value: string
+    readonly extension: string
 }
