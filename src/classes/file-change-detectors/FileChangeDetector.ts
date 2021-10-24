@@ -1,4 +1,4 @@
-import { IFileChangeDetector } from '../../interfaces/IFileChangeDetector'
+import { IFileChangeDetector } from '../../interfaces/file-chnage-detectors/IFileChangeDetector'
 import * as chokidar from 'chokidar'
 import { EventType } from '../../types/file-change-detects/EventType'
 import { EventToCallback } from '../../types/file-change-detects/EventToCallback'
