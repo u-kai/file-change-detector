@@ -16,6 +16,12 @@ export class ASBJson {
         }
         if (this.isAutoStorybookJson(parseContent)) {
             const { srcTop, storybookTop } = parseContent
+            if (this.isInvalidTail(srcTop) === true) {
+                throw new Error(`invalid srcTop path. ${srcTop} tail is not * / . `)
+            }
+            if (this.isInvalidTail(storybookTop) === true) {
+                throw new Error(`invalid storybookTop path. ${storybookTop} tail is not * / . `)
+            }
             if (this.hasRelativeHead(srcTop)) {
                 parseContent.srcTop = this.removeRelativeHead(parseContent.srcTop)
             }
@@ -35,5 +41,8 @@ export class ASBJson {
     }
     private hasRelativeHead = (path: string) => {
         return /^\.\/[a-z][a-z0-9A-Z]+/.test(path)
+    }
+    private isInvalidTail = (path: string): boolean => {
+        return /[\*\.\/]$/.test(path)
     }
 }

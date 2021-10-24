@@ -31,15 +31,14 @@ export default {
 export const Storybook = () => <${this.componentName.name}>auto create</${this.componentName.name}>`
         return content
     }
-    getImportStatementPath = (): string => {
+    private getImportStatementPath = (): string => {
         const importStatementPath = this.pathParser.getImportStatementPath(
             this.srcDirToStorybooksDir(),
             this.componentFile.directoryPath + this.componentFile.filename
         )
-        console.log(importStatementPath)
         return importStatementPath
     }
-    srcDirToStorybooksDir = (): string => {
+    private srcDirToStorybooksDir = (): string => {
         const src = this.asbJson.srcTop
         const story = this.asbJson.storybookTop
         const replaceToStorybooksDir = this.componentFile.directoryPath.replace(src, story)
