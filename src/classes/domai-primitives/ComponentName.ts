@@ -9,6 +9,6 @@ export class ComponentName implements IComponentName {
         this.name = componentName
     }
     private isBeginUppercase = (value: string): boolean => {
-        return /^[A-Z]*[a-z0-9]*$/.test(value)
+        return /^[A-Z]+[a-z0-9]*$/.test(value)
     }
 }
