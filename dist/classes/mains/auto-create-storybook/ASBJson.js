@@ -39,7 +39,7 @@ class ASBJson {
             this.value = parseContent;
             return this;
         }
-        throw new Error('unexpect error from ASBJSON');
+        throw new Error(`unexpect error from ASBJSON, file content = ${Object.keys(parseContent)}`);
     }
 }
 exports.ASBJson = ASBJson;

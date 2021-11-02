@@ -31,7 +31,7 @@ export class ASBJson {
             this.value = parseContent
             return this
         }
-        throw new Error('unexpect error from ASBJSON')
+        throw new Error(`unexpect error from ASBJSON, file content = ${Object.keys(parseContent)}`)
     }
     private isAutoStorybookJson = (value: any): value is AutoStorybookJson => {
         return value.srcTop && value.storybookTop

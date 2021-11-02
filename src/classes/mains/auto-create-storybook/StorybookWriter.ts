@@ -26,7 +26,7 @@ export class StorybookWriter implements IFileWriter {
     private makeContents = (): string => {
         const importStatement = `import {${this.componentName.name}} from "${this.getImportStatementPath()}"`
         const content = `${importStatement}
-import {action} from "@storybook/addon-action"
+import {action} from "@storybook/addon-actions"
 export default {
     component: ${this.componentName.name},
     title: '${this.componentName.name}'

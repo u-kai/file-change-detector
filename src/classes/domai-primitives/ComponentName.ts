@@ -4,11 +4,11 @@ export class ComponentName implements IComponentName {
     readonly name: string
     constructor(componentName: string) {
         if (this.isBeginUppercase(componentName) === false) {
-            throw new Error("Component name's first charactor is must uppercase letter")
+            throw new Error(`Component name's first charactor is must uppercase letter.\n${componentName}`)
         }
         this.name = componentName
     }
     private isBeginUppercase = (value: string): boolean => {
-        return /^[A-Z]+[a-z0-9]*$/.test(value)
+        return /^[A-Z]+[a-z0-9A-Z]*$/.test(value)
     }
 }

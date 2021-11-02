@@ -28,18 +28,18 @@ export class AutoCreateStorybook implements MainInterface {
         this.watcher.watch()
     }
     private fileChangeCallback: FileChangeCallback = (changeFilePath: string) => {
-        const changeFile: IFile = new FileDomain(changeFilePath)
-        if (this.isTSX(changeFile) && this.isUnderSrc(changeFilePath)) {
-            try {
+        try {
+            const changeFile: IFile = new FileDomain(changeFilePath)
+            if (this.isTSX(changeFile) && this.isUnderSrc(changeFilePath)) {
                 const componentName: IComponentName = new ComponentName(changeFile.filenameExcludeExtension)
                 const replacedPath: IPath = new ComponentFilePath(this.replaceSrcToStorybook(changeFile.directoryPath))
                 new DirectoryCreater(replacedPath).create()
                 new StorybookWriter(componentName, changeFile, this.pathParser).write()
                 return
-            } catch (e) {
-                console.log(e)
-                return
             }
+        } catch (e) {
+            console.log(e)
+            return
         }
         return
     }

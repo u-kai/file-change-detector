@@ -18,12 +18,19 @@ class AutoCreateStorybook {
             this.watcher.watch();
         };
         this.fileChangeCallback = (changeFilePath) => {
-            const changeFile = new FileDomain_1.FileDomain(changeFilePath);
-            if (this.isTSX(changeFile) && this.isUnderSrc(changeFilePath)) {
-                const componentName = new ComponentName_1.ComponentName(changeFile.filenameExcludeExtension);
-                const replacedPath = new ComponentFilePath_1.ComponentFilePath(this.replaceSrcToStorybook(changeFile.directoryPath));
-                new DirectoryCreater_1.DirectoryCreater(replacedPath).create();
-                new StorybookWriter_1.StorybookWriter(componentName, changeFile, this.pathParser).write();
+            try {
+                const changeFile = new FileDomain_1.FileDomain(changeFilePath);
+                if (this.isTSX(changeFile) && this.isUnderSrc(changeFilePath)) {
+                    const componentName = new ComponentName_1.ComponentName(changeFile.filenameExcludeExtension);
+                    const replacedPath = new ComponentFilePath_1.ComponentFilePath(this.replaceSrcToStorybook(changeFile.directoryPath));
+                    new DirectoryCreater_1.DirectoryCreater(replacedPath).create();
+                    new StorybookWriter_1.StorybookWriter(componentName, changeFile, this.pathParser).write();
+                    return;
+                }
+            }
+            catch (e) {
+                console.log(e);
+                return;
             }
             return;
         };
