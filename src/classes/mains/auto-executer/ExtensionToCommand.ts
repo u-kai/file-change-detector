@@ -3,7 +3,7 @@ import { resolve } from 'path'
 import { IExtension } from '../../../interfaces/domain-privitives/IExtension'
 import { AnyExtension } from '../../domai-primitives/AnyExtension'
 
-export class ExtensinoToCommand {
+export class ExtensionToCommand {
     private extensionToCommand: { [key: string]: string }
     constructor() {
         const jsonContent: string = readFileSync(resolve(__dirname, 'ExtensionToCommands.json'), 'utf-8')

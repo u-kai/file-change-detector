@@ -1,4 +1,5 @@
 {
     "py":"python",
-    "js":"node"
+    "js":"node",
+    "ts":"npm run dev"
 }
