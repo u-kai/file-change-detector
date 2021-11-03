@@ -3,7 +3,7 @@ import { IExtension } from '../../interfaces/domain-privitives/IExtension'
 export class AnyExtension implements IExtension {
     readonly extension: string
     private extensionMaxLength = 10
-    private extensionMinLength = 3
+    private extensionMinLength = 2
     constructor(extension: string) {
         if (this.isNotExtension(extension)) {
             throw new Error(`${extension} is not extension `)

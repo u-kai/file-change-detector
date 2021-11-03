@@ -1,4 +1,4 @@
-import { AutoCreateStorybook } from './classes/mains/auto-create-storybook/AutoCreateStorybook'
+import { AutoExecuter } from './classes/mains/auto-executer/AutoExecuter'
 if (require.main) {
-    new AutoCreateStorybook().run()
+    new AutoExecuter().run()
 }
